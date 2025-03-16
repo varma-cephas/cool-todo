@@ -63,6 +63,13 @@ window.onload=()=>{
         const ename=e.target;
         if(ename.tagName==="INPUT"){
             ename.nextSibling.style.textDecoration="line-through";
+            fetch("/remove-todo",{
+                method: "PATCH",
+                body: new URLSearchParams(ename.nextSibling.textContent),
+            })
+            setTimeout(()=>{
+                ename.parentElement.remove()
+            },1500)
         }
     })
 }
