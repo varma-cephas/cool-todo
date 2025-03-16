@@ -9,6 +9,10 @@ const loadComponents = async(id, url)=>{
     input_todo_form.addEventListener("submit", e=>{
         e.preventDefault();
         const todo_item=document.createElement("li");
+        const todo_checkbox=document.createElement("input");
+        const todo_name=document.createElement("span");
+
+        todo_checkbox.setAttribute("type", "checkbox");
 
         const fd= new FormData(input_todo_form);
         fetch("/", {
@@ -18,7 +22,11 @@ const loadComponents = async(id, url)=>{
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
-        todo_item.textContent=input_field.value
+        todo_name.textContent=input_field.value;
+        todo_item.append(todo_checkbox)
+        todo_item.append(todo_name)
+        // todo_item.innerHTML =todo_checkbox;
+
         document.getElementById("todo_list_item").append(todo_item)
         input_field.value="";
     })
@@ -34,7 +42,15 @@ window.onload=()=>{
         if(response.length>=1){
             for(const item of response){
                 const todo_item=document.createElement("li");
-                todo_item.textContent=item;
+                const todo_checkbox=document.createElement("input");
+                const todo_name=document.createElement("span");
+
+                todo_checkbox.setAttribute("type", "checkbox");
+
+                todo_name.textContent=item;
+                todo_item.append(todo_checkbox)
+                todo_item.append(todo_name)
+
                 document.getElementById("todo_list_item").append(todo_item)
             }
         }
