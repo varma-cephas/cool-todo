@@ -22,6 +22,11 @@ const loadComponents = async(id, url)=>{
         document.getElementById("todo_list_item").append(todo_item)
         input_field.value="";
     })
+}
+
+window.onload=()=>{
+    loadComponents('todo_list', "./dist/sections/todo_list.html");
+    loadComponents('todo_form', "./dist/sections/todo_form.html");
 
     const getTodo= async()=>{
         const request = await fetch("/todo_arr");
@@ -35,11 +40,6 @@ const loadComponents = async(id, url)=>{
         }
     }
     getTodo()
-}
-
-window.onload=()=>{
-    loadComponents('todo_list', "./dist/sections/todo_list.html");
-    loadComponents('todo_form', "./dist/sections/todo_form.html");
 }
 
 
