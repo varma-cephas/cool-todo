@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 
 const app = express();
-
+const arrOfTodo=[];
 //get port from env or use indicated port
 const PORT= process.env.PORT || 3000;
 
@@ -23,9 +23,14 @@ app.use(express.static(path.join(__dirname, "../")));
 //gets the form element
 app.use(express.urlencoded({extended:true}))
 
+app.get("/todo_arr", (req, res)=>{
+    res.send(arrOfTodo)
+})
+
 app.post("/", async (req, res)=>{
     const todoItem= await req.body.todo_item;
-    console.log(todoItem)
+    arrOfTodo.push(todoItem);
+    console.log(arrOfTodo)
     res.status(200)
 })
 
