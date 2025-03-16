@@ -69,7 +69,7 @@ window.onload=()=>{
             })
             setTimeout(()=>{
                 ename.parentElement.remove()
-            },1500)
+            },1100)
         }
     })
 }
