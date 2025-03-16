@@ -13,6 +13,7 @@ const loadComponents = async(id, url)=>{
         const todo_name=document.createElement("span");
 
         todo_checkbox.setAttribute("type", "checkbox");
+        todo_checkbox.setAttribute("class", "todo_checkbox");
 
         const fd= new FormData(input_todo_form);
         fetch("/", {
@@ -46,6 +47,7 @@ window.onload=()=>{
                 const todo_name=document.createElement("span");
 
                 todo_checkbox.setAttribute("type", "checkbox");
+                todo_checkbox.setAttribute("class", "todo_checkbox");
 
                 todo_name.textContent=item;
                 todo_item.append(todo_checkbox)
@@ -56,8 +58,14 @@ window.onload=()=>{
         }
     }
     getTodo()
-}
 
+    document.getElementById("todo_list").addEventListener("change", e=>{
+        const ename=e.target;
+        if(ename.tagName==="INPUT"){
+            ename.nextSibling.style.textDecoration="line-through";
+        }
+    })
+}
 
 
 
