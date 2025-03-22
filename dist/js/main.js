@@ -35,6 +35,7 @@ const loadComponents = async(id, url)=>{
 
 window.onload=()=>{
     loadComponents('todo_list', "./dist/sections/todo_list.html");
+    loadComponents('add_todo_btn', "./dist/sections/add_todo_btn.html");
     loadComponents('todo_form', "./dist/sections/todo_form.html");
 
     const getTodo= async()=>{
