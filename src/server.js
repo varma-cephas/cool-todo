@@ -26,7 +26,8 @@ app.use(express.static(path.join(__dirname, "../")));
 app.use(express.urlencoded({extended:true}))
 
 app.get("/todo_arr", (req, res)=>{
-    res.send(arrOfTodo)
+    res.send(arrOfTodo);
+    res.status(200)
 })
 
 app.post("/", async (req, res)=>{

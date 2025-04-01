@@ -5,6 +5,7 @@ const loadComponents = async(id, url)=>{
 
     const input_todo_form = document.querySelector("#input_todo_form");
     const input_field = document.querySelector("#input_field");
+    const cancel_btn = document.querySelector("#cancel_todo");
     
     input_todo_form.addEventListener("submit", e=>{
         e.preventDefault();
@@ -24,12 +25,20 @@ const loadComponents = async(id, url)=>{
             }
         })
         todo_name.textContent=input_field.value;
+        todo_name.style.cssText = `
+            padding:"8px";
+            cursor: pointer;
+        `
         todo_item.append(todo_checkbox)
         todo_item.append(todo_name)
-        // todo_item.innerHTML =todo_checkbox;
 
         document.getElementById("todo_list_item").append(todo_item)
         input_field.value="";
+    })
+
+    cancel_btn.addEventListener("click",()=>{
+        document.getElementById("todo_form").style.display="none";
+        document.getElementById("add_todo_btn").style.display="block";
     })
 }
 
@@ -50,6 +59,11 @@ window.onload=()=>{
                 todo_checkbox.setAttribute("type", "checkbox");
                 todo_checkbox.setAttribute("class", "todo_checkbox");
 
+                todo_name.style.cssText = `
+                padding:"8px";
+                cursor: pointer;
+                `
+
                 todo_name.textContent=item;
                 todo_item.append(todo_checkbox)
                 todo_item.append(todo_name)
@@ -59,6 +73,11 @@ window.onload=()=>{
         }
     }
     getTodo()
+
+    document.getElementById("add_todo_btn").addEventListener("click",()=>{
+        document.getElementById("todo_form").style.display="block";
+        document.getElementById("add_todo_btn").style.display="none";
+    })
 
     document.getElementById("todo_list").addEventListener("change", e=>{
         const ename=e.target;
