@@ -33,6 +33,7 @@ app.get("/todo_arr", (req, res)=>{
 app.post("/", async (req, res)=>{
     const todoItem= await req.body.todo_item;
     arrOfTodo.push(todoItem);
+    console.log(todoItem)
     res.status(200)
 })
 

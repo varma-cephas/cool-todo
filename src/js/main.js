@@ -92,6 +92,39 @@ window.onload=()=>{
             },1100)
         }
     })
+
+    document.getElementById("todo_list").addEventListener("click", e=>{
+        const ename=e.target;
+        const update_todo = document.createElement("input");
+        const done_updating_btn = document.createElement("button");
+        const update_todo_container = document.createElement("div");
+
+        if(ename.tagName==="SPAN"){
+            ename.previousSibling.style.display="none";
+            ename.style.display="none";
+            update_todo.style.cssText=`
+            border: 2px solid;
+            display: block;
+            margin-bottom: 0.56rem;
+            `
+            update_todo.value=ename.textContent;
+            update_todo.placeholder="Update mission item";
+
+            done_updating_btn.textContent="Update";
+            done_updating_btn.style.cssText = `
+            `
+
+            update_todo_container.append(update_todo);
+            update_todo_container.append(done_updating_btn);
+
+            update_todo_container.style.cssText = `
+                display: flex;
+                gap: 1rem;
+            `
+
+            document.getElementById("todo_list_item").append(update_todo_container);
+        }
+    })
 }
 
 
